@@ -1,0 +1,9 @@
+a {
+    margin-right: 8px;
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover {
+    text-decoration: underline;
+}
