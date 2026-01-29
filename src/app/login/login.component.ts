@@ -24,6 +24,13 @@ export class LoginComponent {
       return;
     }
 
+    const {username, password} = this.loginForm.value;
+
+    if (username !== 'user' || password !== 'library') {
+      this.loginForm.setErrors({ invalidCredentials: true });
+      return;
+    }
+
     this.authService.login()
     this.router.navigate(['/dashboard/books']);
   }
