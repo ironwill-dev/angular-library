@@ -1,1 +1,11 @@
-<p>books works!</p>
+<h2>Available Books:</h2>
+<ul>
+  @for (book of books; track book.id) {
+    <li>
+      <strong>{{ book.title }}</strong> by {{ book.author }}
+      <button (click)="borrow(book.id)" [disabled]="!book.available">
+          {{ book.available ? 'Borrow' : 'Not Available' }}
+      </button>
+    </li>
+  }
+</ul>

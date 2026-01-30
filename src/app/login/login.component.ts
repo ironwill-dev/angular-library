@@ -40,5 +40,11 @@ export class LoginComponent {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    this.loginForm.valueChanges.subscribe(() => {
+      if (this.loginForm.errors) {
+        this.loginForm.setErrors(null);
+      }
+    })
   }
 }

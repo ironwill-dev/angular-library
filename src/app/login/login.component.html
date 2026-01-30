@@ -20,6 +20,12 @@
             </h5>
         }
     </div>
+
+    @if (loginForm.errors?.['invalidCredentials']) {
+        <h5>
+            Invalid username or password
+        </h5>
+    }
     
     <button type="submit" [disabled]="loginForm.invalid">Login</button>
 </form>

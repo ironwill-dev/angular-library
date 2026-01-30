@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LibraryService, Book } from '../library/library.service';
 
 @Component({
   selector: 'app-loans',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './loans.component.css'
 })
 export class LoansComponent {
+  loans: Book[] = [];
 
+  constructor(private libraryService: LibraryService) {}
+
+  ngOnInit() {
+    this.loans = this.libraryService.getLoans();
+  }
 }

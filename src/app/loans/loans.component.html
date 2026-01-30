@@ -1,1 +1,12 @@
-<p>loans works!</p>
+<h2>Loaned Books:</h2>
+<ul>
+  @for (loan of loans; track loan.id) {
+    <li>
+        <strong>{{ loan.title }}</strong> by {{ loan.author }}
+    </li>
+  }
+
+  @if (loans.length === 0) {
+    <p>No books are currently loaned out.</p>
+  }
+</ul>
