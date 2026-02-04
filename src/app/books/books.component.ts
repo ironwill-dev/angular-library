@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { LibraryService } from '../library/library.service';
+import { computed } from '@angular/core';
 
 @Component({
   selector: 'app-books',
@@ -15,4 +16,8 @@ export class BooksComponent {
   borrow(id: number) {
     this.libraryService.borrowBook(id);
   }
+
+  availableCount = computed(() => 
+    this.books().filter(book => book.available).length
+  );
 }

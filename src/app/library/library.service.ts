@@ -22,14 +22,20 @@ export class LibraryService {
     return this.books.asReadonly();
   }
 
+  getLoans() {
+    return this.books().filter(b => !b.available);
+  }
+
   borrowBook(id: number) {
     this.books.update(books => 
       books.map(b => b.id === id ? { ...b, available: false } : b)
     );
   }
 
-  getLoans() {
-    return this.books().filter(b => !b.available);
+  returnBook(id: number) {
+    this.books.update(books => 
+      books.map(b => b.id === id ? { ...b, available: true } : b)
+    );
   }
 }
 

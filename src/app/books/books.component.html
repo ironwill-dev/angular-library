@@ -1,11 +1,18 @@
-<h2>Available Books:</h2>
+<h2>{{ availableCount() }} Available Books:</h2>
 <ul>
   @for (book of books(); track book.id) {
-    <li>
+    <li [class.unavailable]="!book.available">
       <strong>{{ book.title }}</strong> by {{ book.author }}
       <button (click)="borrow(book.id)" [disabled]="!book.available">
           {{ book.available ? 'Borrow' : 'Not Available' }}
       </button>
+      @if (!book.available) {
+        <span> - Loaned</span>
+      }
     </li>
   }
-</ul>
+
+  @if (availableCount() === 0) {
+    <p>No books are currently available.</p>
+  }
+</ul> 

@@ -15,4 +15,13 @@ export class LoansComponent {
   ngOnInit() {
     this.loans = this.libraryService.getLoans();
   }
+
+  loanedCount(): number {
+    return this.loans.length;
+  }
+
+  returnBook(id: number) {
+    this.libraryService.returnBook(id);
+    this.loans = this.libraryService.getLoans();
+  }
 }

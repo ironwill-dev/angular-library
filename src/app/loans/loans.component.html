@@ -1,8 +1,10 @@
-<h2>Loaned Books:</h2>
+<h2>{{ loanedCount() }} Loaned Books:</h2>
 <ul>
+
   @for (loan of loans; track loan.id) {
     <li>
         <strong>{{ loan.title }}</strong> by {{ loan.author }}
+        <button (click)="returnBook(loan.id)">Return</button>
     </li>
   }
 
